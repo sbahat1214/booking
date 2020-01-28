@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {Route, Switch} from 'react-router-dom'
+import AllServices from './components/AllServices'
+import FirstStep from './components/FirstStep'
+import SecondStep from './components/SecondStep'
+import ThirdStep from './components/ThirdStep'
+import FinalResult from './components/FinalResult'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+        <Switch>
+          <Route exact component={FirstStep} path='/:parent' />
+          <Route exact component={SecondStep} path='/:parent/:child' />
+          <Route exact component={ThirdStep} path='/:parent/:child/:child' />
+          <Route exact component={FinalResult} path='/:parent/:child/:child/:final' />
+          <Route exact component={AllServices} path='/' />
+        </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
